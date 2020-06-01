@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import './App.css';
+import StateComp from './Component/Classes/StateComp';
 // import FungsiKomponent from './Component/Functional/FungsiKomponent';
 // import KelasComponent from './Component/Classes/KelasComponent';
-import Home from './Component/Classes/Home';
+// import Home from './Component/Classes/Home';
 
 function App() {
   return (
     <Fragment>
-      <Home/>
+      <StateComp/>
     </Fragment>
   );
 }
