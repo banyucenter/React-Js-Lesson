@@ -11,3 +11,12 @@
     width: 300px;
     height: 200px;
 }
+
+.btn-click {
+    background-color: firebrick;
+    color:white;
+    padding: 15px;
+    width:100px;
+    border: none;
+    font-size: 12pt;
+}

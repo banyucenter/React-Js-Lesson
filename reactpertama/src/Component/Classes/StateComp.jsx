@@ -7,8 +7,7 @@ class StateComp extends Component {
         super(props)
 
         this.state = {
-            stock: 10,
-            harga: 43000000,
+            stock: this.props.stock,
             sub: "Beli",
             status: "Tersedia",
             disabled: false
@@ -33,10 +32,11 @@ class StateComp extends Component {
     render() {
         return (
             <div className="box-stok">
+                <h2>{this.props.nama}</h2>
                 <img src="https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/5/25/73ce423e-0458-4566-b0ff-8fed37bab585.jpg.webp" alt="Macbook Pro 2020"/>
-                <p>Harga Rp.<b>{this.state.harga}</b></p>
+                <p>Harga Rp.<b>{this.props.harga}</b></p>
                 <p>Stok Tersedia <b>{this.state.stock}</b></p>
-                <button onClick={this.ButtonBeli} disabled={this.state.disabled}>{this.state.sub}</button>
+                <button className="btn-click" onClick={this.ButtonBeli} disabled={this.state.disabled}>{this.state.sub}</button>
                 <p>{this.state.status}</p>
             </div>
         )

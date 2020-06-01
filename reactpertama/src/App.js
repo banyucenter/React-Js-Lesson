@@ -8,9 +8,18 @@ import StateComp from './Component/Classes/StateComp';
 function App() {
   return (
     <Fragment>
-      <StateComp/>
-      <StateComp/>
-      <StateComp/>
+      <StateComp
+        nama="MacBook Pro 2020 Mid Retina"
+        stock="10"
+        harga="43000000" />
+      <StateComp
+        nama="MacBook Air 2020 Mid Retina"
+        stock="20"
+        harga="40000000" />
+      <StateComp
+        nama="MacBook Pro 2019 Mid Retina"
+        stock="25"
+        harga="33000000" />
     </Fragment>
   );
 }
