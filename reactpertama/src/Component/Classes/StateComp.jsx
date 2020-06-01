@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../../App.css';
+import './css/StateComp.css';
 
 class StateComp extends Component {
     constructor(props) {
@@ -7,6 +8,7 @@ class StateComp extends Component {
 
         this.state = {
             stock: 10,
+            harga: 43000000,
             sub: "Beli",
             status: "Tersedia",
             disabled: false
@@ -30,8 +32,10 @@ class StateComp extends Component {
 
     render() {
         return (
-            <div className="App">
-                <p>Stok MacBook Pro 2020 adalah: <b>{this.state.stock}</b></p>
+            <div className="box-stok">
+                <img src="https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/5/25/73ce423e-0458-4566-b0ff-8fed37bab585.jpg.webp" alt="Macbook Pro 2020"/>
+                <p>Harga Rp.<b>{this.state.harga}</b></p>
+                <p>Stok Tersedia <b>{this.state.stock}</b></p>
                 <button onClick={this.ButtonBeli} disabled={this.state.disabled}>{this.state.sub}</button>
                 <p>{this.state.status}</p>
             </div>

@@ -9,6 +9,8 @@ function App() {
   return (
     <Fragment>
       <StateComp/>
+      <StateComp/>
+      <StateComp/>
     </Fragment>
   );
 }
