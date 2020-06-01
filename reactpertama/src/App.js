@@ -1,26 +1,54 @@
 import React, { Fragment } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './App.css';
-import StateComp from './Component/Classes/StateComp';
+
+import Blog from './Component/Functional/Blog';
 // import FungsiKomponent from './Component/Functional/FungsiKomponent';
 // import KelasComponent from './Component/Classes/KelasComponent';
-// import Home from './Component/Classes/Home';
+import Home from './Component/Classes/Home';
+import Produk from './Component/Classes/Produk';
 
 function App() {
   return (
-    <Fragment>
-      <StateComp
-        nama="MacBook Pro 2020 Mid Retina"
-        stock="10"
-        harga="43000000" />
-      <StateComp
-        nama="MacBook Air 2020 Mid Retina"
-        stock="20"
-        harga="40000000" />
-      <StateComp
-        nama="MacBook Pro 2019 Mid Retina"
-        stock="25"
-        harga="33000000" />
-    </Fragment>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/produk">Produk</Link>
+              </li>
+
+            </ul>
+          </nav>
+
+          {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/blog">
+              <Blog />
+            </Route>
+            <Route path="/produk">
+              <Produk />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+
   );
 }
 

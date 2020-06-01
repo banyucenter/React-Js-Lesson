@@ -20,7 +20,7 @@ class StateComp extends Component {
 
         })
 
-        if(this.state.stock == 1){
+        if(this.state.stock === 1){
             this.setState ({
                 status : "Maaf Stok Habis Gaes!",
                 disabled : true
