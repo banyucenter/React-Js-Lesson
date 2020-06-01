@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
-import Header from './Component/Functional/Header';
+// import FungsiKomponent from './Component/Functional/FungsiKomponent';
+import KelasComponent from './Component/Classes/KelasComponent';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-    </div>
+    <Fragment>
+      <KelasComponent/>
+    </Fragment>
   );
 }
 
