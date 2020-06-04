@@ -20,6 +20,13 @@ class ParentComp extends Component {
         })
     }
 
+    tambahDataChild = (item) => {
+        this.setState({
+            stock: this.state.stock + item
+
+        })
+    }
+
 
     render() {
         return (
@@ -27,7 +34,9 @@ class ParentComp extends Component {
                 <ChildComp
                     stock={this.state.stock}
                     fungsi={this.ambilDataChild.bind(this)} />
-                <ChildDua stock={this.state.stock} />
+                <ChildDua
+                    stock={this.state.stock}
+                    fungsi={this.tambahDataChild.bind(this)} />
             </div>
         )
     }
