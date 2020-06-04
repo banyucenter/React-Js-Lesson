@@ -8,10 +8,14 @@ class GrandChild extends Component {
             
         }
     }
-
+    minBeli = 1;
     render() {
         return (
-            <div>Grand Child</div>
+            <div>
+                <p>{this.props.data}</p>
+                <button onClick={()=>this.props.fungsi(this.minBeli)}>Stock</button>
+            
+            </div>
         )
     }
 }
