@@ -7,7 +7,12 @@ import React from 'react';
 // } from "react-router-dom";
 
 import './App.css';
-import ParentComp from './Component/Classes/ParentComp';
+// import ParentComp from './Component/Classes/ParentComp';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import HomePage from './Component/Functional/HomePage';
+import AboutComp from './Component/Functional/AboutComp';
+import NavbarComp from './Component/Classes/NavbarComp';
+// import { Container, Row, Col } from 'reactstrap';
 
 // import Blog from './Component/Functional/Blog';
 // // import FungsiKomponent from './Component/Functional/FungsiKomponent';
@@ -17,10 +22,13 @@ import ParentComp from './Component/Classes/ParentComp';
 
 const App = () => {
   return (
-    <div className="App">
-      <ParentComp/>
-    </div>
-
+      <BrowserRouter>
+      <NavbarComp />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/about" component={AboutComp} />
+        </Switch>
+      </BrowserRouter>
   );
 }
 
