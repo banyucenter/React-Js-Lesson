@@ -8,14 +8,10 @@ import {
     Nav,
     NavItem,
     NavLink,
-    // UncontrolledDropdown,
-    // DropdownToggle,
-    // DropdownMenu,
-    // DropdownItem,
     NavbarText
 } from 'reactstrap';
 
-const NavbarComp = (props) => {
+const NavbarComp = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 

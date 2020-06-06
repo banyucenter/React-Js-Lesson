@@ -12,13 +12,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import HomePage from './Component/Functional/HomePage';
 import AboutComp from './Component/Functional/AboutComp';
 import NavbarComp from './Component/Classes/NavbarComp';
-// import { Container, Row, Col } from 'reactstrap';
+import DetailComp from './Component/Functional/DetailComp';
 
-// import Blog from './Component/Functional/Blog';
-// // import FungsiKomponent from './Component/Functional/FungsiKomponent';
-// // import KelasComponent from './Component/Classes/KelasComponent';
-// import Home from './Component/Classes/Home';
-// import Produk from './Component/Classes/Produk';
 
 const App = () => {
   return (
@@ -26,7 +21,8 @@ const App = () => {
       <NavbarComp />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/about" component={AboutComp} />
+          <Route exact path="/about" component={AboutComp} />
+          <Route exact path="/detail/:id" component={DetailComp} />
         </Switch>
       </BrowserRouter>
   );
