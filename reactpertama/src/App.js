@@ -14,7 +14,7 @@ import AboutComp from './Component/Functional/AboutComp';
 import NavbarComp from './Component/Classes/NavbarComp';
 import DetailComp from './Component/Functional/DetailComp';
 
-
+// <!--App js-->
 const App = () => {
   return (
       <BrowserRouter>
