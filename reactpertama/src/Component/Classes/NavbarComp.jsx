@@ -8,7 +8,8 @@ import {
     Nav,
     NavItem,
     NavLink,
-    NavbarText
+    NavbarText,
+    Button
 } from 'reactstrap';
 
 const NavbarComp = () => {
@@ -17,7 +18,7 @@ const NavbarComp = () => {
 
         return (<div>
             <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">reactstrap</NavbarBrand>
+                <NavbarBrand href="/">React.Js</NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
@@ -27,9 +28,12 @@ const NavbarComp = () => {
                         <NavItem>
                             <NavLink><Link to="/about">About</Link></NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink><Link to="/mahasiswa">Mahasiswa</Link></NavLink>
+                        </NavItem>
                         
                     </Nav>
-                    <NavbarText>Simple Text</NavbarText>
+                    
                 </Collapse>
             </Navbar>
         </div>

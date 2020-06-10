@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "../../../../../code"
+		},
+		{
+			"path": "../../../../apprestapi"
+		},
+		{
+			"path": "../../../../../../Desktop/Riset Block Chain/Blockchain"
 		}
 	],
 	"settings": {

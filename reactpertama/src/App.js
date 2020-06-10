@@ -13,6 +13,9 @@ import HomePage from './Component/Functional/HomePage';
 import AboutComp from './Component/Functional/AboutComp';
 import NavbarComp from './Component/Classes/NavbarComp';
 import DetailComp from './Component/Functional/DetailComp';
+import ListMahasiswa from './Component/Classes/ListMahasiswa';
+import TambahComp from './Component/Classes/TambahComp';
+
 
 // <!--App js-->
 const App = () => {
@@ -22,6 +25,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={AboutComp} />
+          <Route exact path="/mahasiswa" component={ListMahasiswa} />
+          <Route exact path="/mahasiswa/tambah" component={TambahComp} />
           <Route exact path="/detail/:id" component={DetailComp} />
         </Switch>
       </BrowserRouter>
