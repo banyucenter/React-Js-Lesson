@@ -27,7 +27,8 @@ const App = () => {
           <Route exact path="/about" component={AboutComp} />
           <Route exact path="/mahasiswa" component={ListMahasiswa} />
           <Route exact path="/mahasiswa/tambah" component={TambahComp} />
-          <Route exact path="/detail/:id" component={DetailComp} />
+          {/* <Route exact path="/edit/:id" component={EditTambahComp} />
+          <Route exact path="/detail/:id" component={DetailComp} /> */}
         </Switch>
       </BrowserRouter>
   );

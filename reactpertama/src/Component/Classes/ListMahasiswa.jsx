@@ -1,106 +1,93 @@
 import React, { Component } from 'react';
-import { Table, Button, Alert, Container, Col, Row, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Table, Button, Container, NavLink, Alert } from 'reactstrap';
+
+import axios from 'axios';
+import qs from 'querystring';
+
+const api = axios.create({
+    baseURL: 'http://localhost:3001'
+})
 
 class ListMahasiswa extends Component {
-
     constructor(props) {
         super(props);
+        api.get('/tampil').then(res => {
+            console.log(res.data.values)
+            this.setState({
+                mahasiswa: res.data.values
+            })
+        })
+
         this.state = {
-            error: null,
             mahasiswa: [],
-            response: {}
+            response: '',
+            display: 'none'
         }
     }
 
-    componentDidMount() {
-        const apiUrl = 'http://localhost:3001/tampil';
-
-        fetch(apiUrl)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        mahasiswa: result.values
-                    });
-                },
-                (error) => {
-                    this.setState({ error });
-                }
-            )
-    }
-
-    deleteMahasiswa = (idmahasiswa) => {
+    Deletemahasiswa = (idmahasiswa) => {
         const { mahasiswa } = this.state;
-        const apiUrl = 'http://localhost:3001/hapus';
-        let formBody = [];
-        let id = 'id_mahasiswa';
-        formBody.push(id + "=" + idmahasiswa);
+        const data = qs.stringify({
+            id_mahasiswa: idmahasiswa
+        });
 
-        const options = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: formBody
-        }
-
-        fetch(apiUrl, options)
-            .then(res => res.json())
-            .then(
-                (result) => {
+        axios.delete('http://localhost:3001/hapus',
+            {
+                data: data,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+            })
+            .then(json => {
+                if (json.data.status === 200) {
+                    console.log(json.data.status);
                     this.setState({
-                        response: result,
-                        mahasiswa: mahasiswa.filter(mahasiswa => mahasiswa.id_mahasiswa !== idmahasiswa)
+                        response: json.data.values,
+                        mahasiswa: mahasiswa.filter(mahasiswa => mahasiswa.id_mahasiswa !== idmahasiswa),
+                        display: 'block'
                     });
-                },
-                (error) => {
-                    this.setState({ error });
+                    this.props.history.push('/mahasiswa')
                 }
-            )
-
+                else {
+                    alert('Mahasiswa gagal terhapus');
+                    this.props.history.push('/mahasiswa')
+                }
+            });
     }
 
     render() {
-        const { error, mahasiswa } = this.state;
-
-        if (error) {
-            return (
-                <div>Error: {error.message}</div>
-            )
-        } else {
-            return (
-                <Container>
-                    <h2>Daftar Mahasiswa</h2>
-                    {this.state.response.values && <Alert variant="info">{this.state.response.values}</Alert>}
-                    <NavLink href="/mahasiswa/tambah"><Button color="info">+ Mahasiswa</Button></NavLink>
-                    <hr />
-                    <Table className="table-bordered">
-                        <thead>
-                            <tr>
-                                <th>NIM</th>
-                                <th>Nama</th>
-                                <th>Jurusan</th>
-                                <th>Aksi</th>
+        return (
+            <Container>
+                <h2>Daftar Mahasiswa</h2>
+                <Alert color="success" style={{ display: this.state.display }}>
+                    {this.state.response}
+                </Alert>
+                <NavLink href="/mahasiswa/tambah"><Button color="info">+ Mahasiswa</Button></NavLink>
+                <hr />
+                <Table className="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>NIM</th>
+                            <th>Nama</th>
+                            <th>Jurusan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.mahasiswa.map(mahasiswa =>
+                            <tr key={mahasiswa.id_mahasiswa}>
+                                <td>{mahasiswa.nim}</td>
+                                <td>{mahasiswa.nama}</td>
+                                <td>{mahasiswa.jurusan}</td>
+                                <td>
+                                    <Button color="info">Edit</Button>
+                                    <span> </span>
+                                    <Button onClick={() => this.Deletemahasiswa(mahasiswa.id_mahasiswa)} color="danger" >Delete</Button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {mahasiswa.map(mahasiswa => (
-                                <tr key={mahasiswa.id_mahasiswa}>
-                                    <td>{mahasiswa.nim}</td>
-                                    <td>{mahasiswa.nama}</td>
-                                    <td>{mahasiswa.jurusan}</td>
-                                    <td>
-                                        <Button color="info" onClick={() => this.props.editProduct(mahasiswa.id_mahasiswa)}>Edit</Button> <span> </span>
-                                        <Button color="danger" onClick={() => this.deleteMahasiswa(mahasiswa.id_mahasiswa)}>Delete</Button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </Container>
-            )
-        }
+                        )}
+                    </tbody>
+                </Table>
+            </Container>
+        )
     }
 }
 

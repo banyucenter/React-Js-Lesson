@@ -1,5 +1,4 @@
-import React, { useState} from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState} from 'react';
 import {
     Collapse,
     Navbar,
@@ -7,9 +6,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    NavbarText,
-    Button
+    NavLink
 } from 'reactstrap';
 
 const NavbarComp = () => {
@@ -23,17 +20,15 @@ const NavbarComp = () => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <NavLink><Link to="/">Home</Link></NavLink>
+                            <NavLink href="/">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink><Link to="/about">About</Link></NavLink>
+                            <NavLink href="/about">About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink><Link to="/mahasiswa">Mahasiswa</Link></NavLink>
+                            <NavLink href="/mahasiswa">Mahasiswa</NavLink>
                         </NavItem>
-                        
                     </Nav>
-                    
                 </Collapse>
             </Navbar>
         </div>
