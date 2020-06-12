@@ -4,14 +4,12 @@ import { Table, Button, Container, NavLink, Alert } from 'reactstrap';
 import axios from 'axios';
 import qs from 'querystring';
 
-const api = axios.create({
-    baseURL: 'http://localhost:3001'
-})
+const api = 'http://localhost:3001'
 
 class ListMahasiswa extends Component {
     constructor(props) {
         super(props);
-        api.get('/tampil').then(res => {
+        axios.get(api + '/tampil').then(res => {
             console.log(res.data.values)
             this.setState({
                 mahasiswa: res.data.values
@@ -31,10 +29,10 @@ class ListMahasiswa extends Component {
             id_mahasiswa: idmahasiswa
         });
 
-        axios.delete('http://localhost:3001/hapus',
+        axios.delete(api + '/hapus',
             {
                 data: data,
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .then(json => {
                 if (json.data.status === 200) {
