@@ -1,55 +1,59 @@
 import React, { PureComponent } from 'react'
-import { Container, Col, Form, Alert, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Form, Alert, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import qs from 'querystring';
 
 const api = 'http://localhost:3001'
 
-class TambahComp extends PureComponent {
+class EditComp extends PureComponent {
     constructor(props) {
         super(props)
 
         this.state = {
-            nim: '',
-            nama: '',
-            jurusan: '',
+            id_mahasiswa: this.props.location.state.id_mahasiswa,
+            nim: this.props.location.state.nim,
+            nama: this.props.location.state.nama,
+            jurusan: this.props.location.state.jurusan,
             response: '',
             display: 'none'
         }
     }
 
-    Addmahasiswa = () => {
-        axios.post(api + '/tambah', {
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    Ubahmahasiswa = (idmahasiswa) => {
+        const data = qs.stringify({
+            id_mahasiswa: idmahasiswa,
             nim: this.state.nim,
             nama: this.state.nama,
             jurusan: this.state.jurusan
-        })
+        });
+
+        axios.put(api + '/ubah',data)
             .then(json => {
                 if (json.data.status === 200) {
                     console.log(json.data.status);
-                    // alert("Mahasiswa telah ditambahkan");
                     this.setState({
                         response: json.data.values,
                         display: 'block'
-                    })
+                    });
                 }
                 else {
-                    // alert('Mahasiswa gagal tersimpan');
-                    debugger;
-                    this.props.history.push('/mahasiswa/tambah')
+                    this.setState({
+                        response: json.data.values,
+                        display: 'block'
+                    });
                 }
-            })
-    }
-
-
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+            });
     }
 
     render() {
         return (
             <Container>
-                <h4>Masukan data mahasiswa</h4>
+                <h4>Ubah data mahasiswa</h4>
                 <Alert color="success" style={{ display: this.state.display }}>
                     {this.state.response}
                 </Alert>
@@ -76,8 +80,9 @@ class TambahComp extends PureComponent {
                     </Col>
                     <Col>
                         <FormGroup row>
-                            <Col>   
-                                <button type="button" onClick={this.Addmahasiswa} className="btn btn-success">Submit</button>
+                            <Row>
+                            <Col>
+                                <button type="button" onClick={() => this.Ubahmahasiswa(this.state.id_mahasiswa)} className="btn btn-success">Submit</button>
                             </Col>
                             <Col>
                                 <Button color="danger">Reset</Button>{' '}
@@ -85,13 +90,13 @@ class TambahComp extends PureComponent {
                             <Col>
                                 <Link to='/mahasiswa'><Button color="secondary">Kembali</Button></Link>
                             </Col>
+                            </Row>
                         </FormGroup>
                     </Col>
                 </Form>
             </Container>
-
         )
     }
 }
 
-export default TambahComp
+export default EditComp

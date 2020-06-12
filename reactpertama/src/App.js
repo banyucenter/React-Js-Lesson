@@ -12,9 +12,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import HomePage from './Component/Functional/HomePage';
 import AboutComp from './Component/Functional/AboutComp';
 import NavbarComp from './Component/Classes/NavbarComp';
-import DetailComp from './Component/Functional/DetailComp';
 import ListMahasiswa from './Component/Classes/ListMahasiswa';
 import TambahComp from './Component/Classes/TambahComp';
+import EditComp from './Component/Classes/EditComp';
 
 
 // <!--App js-->
@@ -27,6 +27,7 @@ const App = () => {
           <Route exact path="/about" component={AboutComp} />
           <Route exact path="/mahasiswa" component={ListMahasiswa} />
           <Route exact path="/mahasiswa/tambah" component={TambahComp} />
+          <Route exact path="/mahasiswa/edit" component={EditComp} />
           {/* <Route exact path="/edit/:id" component={EditTambahComp} />
           <Route exact path="/detail/:id" component={DetailComp} /> */}
         </Switch>
