@@ -1,10 +1,4 @@
 import React from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
 
 import './App.css';
 // import ParentComp from './Component/Classes/ParentComp';
@@ -15,6 +9,8 @@ import NavbarComp from './Component/Classes/NavbarComp';
 import ListMahasiswa from './Component/Classes/ListMahasiswa';
 import TambahComp from './Component/Classes/TambahComp';
 import EditComp from './Component/Classes/EditComp';
+import FuncHook from './Component/Hooks/Functional/FuncHook';
+import HooksComp from './Component/Hooks/Class/HooksComp';
 
 
 // <!--App js-->
@@ -28,8 +24,8 @@ const App = () => {
           <Route exact path="/mahasiswa" component={ListMahasiswa} />
           <Route exact path="/mahasiswa/tambah" component={TambahComp} />
           <Route exact path="/mahasiswa/edit" component={EditComp} />
-          {/* <Route exact path="/edit/:id" component={EditTambahComp} />
-          <Route exact path="/detail/:id" component={DetailComp} /> */}
+          <Route exact path="/class" component={HooksComp} />
+          <Route exact path="/hook" component={FuncHook} />
         </Switch>
       </BrowserRouter>
   );
