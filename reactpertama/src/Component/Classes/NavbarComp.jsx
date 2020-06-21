@@ -28,6 +28,13 @@ const NavbarComp = () => {
                         <NavItem>
                             <NavLink href="/mahasiswa">Mahasiswa</NavLink>
                         </NavItem>
+                        {/* Menambahkan 2 menu */}
+                        <NavItem>
+                            <NavLink href="/class">Class Comp</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/hook">Hooks</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>
