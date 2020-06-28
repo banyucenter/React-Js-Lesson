@@ -11,6 +11,8 @@ import TambahComp from './Component/Classes/TambahComp';
 import EditComp from './Component/Classes/EditComp';
 import FuncHook from './Component/Hooks/Functional/FuncHook';
 import HooksComp from './Component/Hooks/Class/HooksComp';
+// import HooksEffects from './Component/Hooks/Functional/HooksEffects';
+import HooksUseEffects from './Component/Hooks/Functional/HooksUseEffects';
 
 
 // <!--App js-->
@@ -26,6 +28,7 @@ const App = () => {
           <Route exact path="/mahasiswa/edit" component={EditComp} />
           <Route exact path="/class" component={HooksComp} />
           <Route exact path="/hook" component={FuncHook} />
+          <Route exact path="/hookeffects" component={HooksUseEffects} />
         </Switch>
       </BrowserRouter>
   );
