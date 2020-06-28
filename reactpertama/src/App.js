@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 // import ParentComp from './Component/Classes/ParentComp';
@@ -13,13 +13,19 @@ import FuncHook from './Component/Hooks/Functional/FuncHook';
 import HooksComp from './Component/Hooks/Class/HooksComp';
 // import HooksEffects from './Component/Hooks/Functional/HooksEffects';
 import HooksUseEffects from './Component/Hooks/Functional/HooksUseEffects';
+import ProductComp from './Component/Hooks/Functional/productComp';
+import { CartContext } from './CartContext';
 
 
 // <!--App js-->
 const App = () => {
+
+  const[value, setValue] = useState(0)
+
   return (
-      <BrowserRouter>
-      <NavbarComp />
+    <BrowserRouter>
+      <CartContext.Provider value={{value,setValue}}>
+        <NavbarComp />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={AboutComp} />
@@ -29,8 +35,10 @@ const App = () => {
           <Route exact path="/class" component={HooksComp} />
           <Route exact path="/hook" component={FuncHook} />
           <Route exact path="/hookeffects" component={HooksUseEffects} />
+          <Route exact path="/produk" component={ProductComp} />
         </Switch>
-      </BrowserRouter>
+      </CartContext.Provider>
+    </BrowserRouter>
   );
 }
 
