@@ -16,7 +16,7 @@ function HooksEffects() {
             console.log(res.data.values)
             setMahasiswa(res.data.values)
         })
-    });
+    },[]);
 
     return (
         <Container>

@@ -7,7 +7,7 @@ function FuncHook() {
     const [jumlah, tambahJumlah] = useState(0);
 
     //login
-    const [dataLogin, setDataLogin] = useState({ username: 'firda', token: '123abcde', isLogin: false });
+    const [dataLogin] = useState({ username: 'firda', token: '123abcde', isLogin: false });
 
     let tampil;
 
