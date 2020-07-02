@@ -20,12 +20,14 @@ import { CartContext } from './CartContext';
 // <!--App js-->
 const App = () => {
 
-  const[value, setValue] = useState(0)
+  const[value, setValue] = useState(1)
 
   return (
     <BrowserRouter>
-      <CartContext.Provider value={{value,setValue}}>
+     
+     <CartContext.Provider value={{value,setValue}}>
         <NavbarComp />
+        
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={AboutComp} />
