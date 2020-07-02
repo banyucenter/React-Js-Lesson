@@ -7,6 +7,11 @@ import { CartContext } from '../../../CartContext';
 
 function RowProduct() {
     const {value,setValue} = useContext(CartContext)
+
+    // const increment = () => {
+    //     setValue(value + 1);
+    //   };
+
     return (
         <Col>
             <Card>
@@ -18,7 +23,7 @@ function RowProduct() {
 
                     <Col>
                         <Button color="warning">Beli</Button> {' '}
-                        <Button color="danger" onClick={()=>setValue(value+1)}> Keranjang</Button>
+                        <Button color="danger" onClick={()=> setValue(value+1)}> Keranjang</Button>
                     </Col>
                 </CardBody>
             </Card>
